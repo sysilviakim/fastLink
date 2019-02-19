@@ -83,8 +83,8 @@ gammaNUMCKpar <- function(matAp, matBp, n.cores = NULL, cut.a = 1, cut.p = 2) {
         t[ t > cut[2] ] <- 0
         t <- Matrix(t, sparse = T)
 
-        t@x[t@x <= cut[1]] <- cut[2] + 1; gc()       	                
-        t@x[t@x > cut[1] & t@x <= cut[2]] <- 1; gc()       	
+        t@x[t@x <= cut[1]] <- cut[2] + 1; gc(reset = TRUE, verbose = TRUE)       	                
+        t@x[t@x > cut[1] & t@x <= cut[2]] <- 1; gc(reset = TRUE, verbose = TRUE)       	
 
         slice.1 <- m[[2]]
         slice.2 <- y[[2]]
@@ -113,7 +113,7 @@ gammaNUMCKpar <- function(matAp, matBp, n.cores = NULL, cut.a = 1, cut.p = 2) {
         difference(temp.1[[r1]], temp.2[[r2]], c(cut.a, cut.p))
     }
 
-    gc()
+    gc(reset = TRUE, verbose = TRUE)
 
     reshape2 <- function(s) { s[[1]] }
     reshape1 <- function(s) { s[[2]] }

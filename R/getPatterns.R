@@ -110,7 +110,7 @@ getPatterns <- function(matchesA, matchesB, varnames,
     }
     gammalist <- data.frame(do.call(cbind, gammalist))
     names(gammalist) <- namevec
-
+    gc(reset = TRUE, verbose = TRUE)
     return(gammalist)
 
 }

@@ -479,7 +479,7 @@ fastLink <- function(dfA, dfB, varnames,
     }else{
         out <- resultsEM
     }
-
+    gc(reset = TRUE, verbose = TRUE)
     return(out)
 
 }

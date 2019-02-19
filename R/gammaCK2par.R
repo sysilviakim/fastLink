@@ -116,7 +116,7 @@ gammaCK2par <- function(matAp, matBp, n.cores = NULL, cut.a = 0.92, method = "jw
             t <- Matrix(t, sparse = T)
         }
         
-        t@x[t@x >= cut] <- 2; gc()       	
+        t@x[t@x >= cut] <- 2; gc(reset = TRUE, verbose = TRUE)       	
         slice.1 <- m[[2]]
         slice.2 <- y[[2]]
         indexes.2 <- which(t == 2, arr.ind = T)
@@ -141,7 +141,7 @@ gammaCK2par <- function(matAp, matBp, n.cores = NULL, cut.a = 0.92, method = "jw
         stringvec(temp.1[[r1]], temp.2[[r2]], cut.a)
     }
 
-    gc()
+    gc(reset = TRUE, verbose = TRUE)
 
     reshape2 <- function(s) { s[[1]] }
     temp.2 <- lapply(temp.f, reshape2)

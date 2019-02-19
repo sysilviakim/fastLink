@@ -119,7 +119,7 @@ gammaCKpar <- function(matAp, matBp, n.cores = NULL, cut.a = 0.92, cut.p = 0.88,
         	}
         
         t@x[t@x >= cut[1]] <- 2
-        t@x[t@x >= cut[2] & t@x < cut[1]] <- 1; gc()
+        t@x[t@x >= cut[2] & t@x < cut[1]] <- 1; gc(reset = TRUE, verbose = TRUE)
         slice.1 <- m[[2]]
         slice.2 <- y[[2]]
         indexes.2 <- which(t == 2, arr.ind = T)
@@ -147,7 +147,7 @@ gammaCKpar <- function(matAp, matBp, n.cores = NULL, cut.a = 0.92, cut.p = 0.88,
         stringvec(temp.1[[r1]], temp.2[[r2]], c(cut.a, cut.p))
     }
 
-    gc()
+    gc(reset = TRUE, verbose = TRUE)
 
     reshape2 <- function(s) { s[[1]] }
     reshape1 <- function(s) { s[[2]] }
