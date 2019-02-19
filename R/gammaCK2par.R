@@ -172,7 +172,7 @@ gammaCK2par <- function(matAp, matBp, n.cores = NULL, cut.a = 0.92, method = "jw
         no_cores <- n.cores
             final.list2 <- mclapply(matches.2, function(s){
             ht1 <- which(matrix.1 == s[1]); ht2 <- which(matrix.2 == s[2]);
-            list(ht1, ht2) }, mc.cores = getOption("mc.cores", no_cores))
+            list(ht1, ht2); gc(reset = TRUE)}, mc.cores = getOption("mc.cores", no_cores))
     }
 
     if(length(matches.2) == 0){ 
@@ -189,7 +189,7 @@ gammaCK2par <- function(matAp, matBp, n.cores = NULL, cut.a = 0.92, method = "jw
     out[["nas"]] <- na.list
     class(out) <- c("fastLink", "gammaCK2par")
     
-    stopCluster(cl)
+    gc(reset = TRUE, verbose = TRUE)
     return(out)
 }
 

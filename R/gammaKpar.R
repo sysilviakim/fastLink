@@ -94,7 +94,7 @@ gammaKpar <- function(matAp, matBp, gender = FALSE, n.cores = NULL) {
     } else {
       final.list <- mclapply(matches.l, function(s){
         ht1[[s]] <- which(matrix.1 == s); ht2[[s]] <- which(matrix.2 == s);
-        list(ht1[[s]], ht2[[s]]) }, mc.cores = getOption("mc.cores", n.cores))
+        list(ht1[[s]], ht2[[s]]); gc(reset = TRUE)}, mc.cores = getOption("mc.cores", n.cores))
     }
     
     na.list <- list()
@@ -106,7 +106,7 @@ gammaKpar <- function(matAp, matBp, gender = FALSE, n.cores = NULL) {
     out[["nas"]] <- na.list
     class(out) <- c("fastLink", "gammaKpar")
 
-    stopCluster(cl)
+    gc(reset = TRUE, verbose = TRUE)
     return(out)
 }
 

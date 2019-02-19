@@ -110,6 +110,7 @@ getMatches <- function(dfA, dfB, fl.out, threshold.match = 0.85, combine.dfs = T
         }
     }
 
+    gc(reset = TRUE, verbose = TRUE)
     return(out)
     
 }

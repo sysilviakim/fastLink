@@ -181,7 +181,6 @@ matchesLink <- function(gammalist, nobs.a, nobs.b, em, thresh, n.cores = NULL) {
     
     class(temp) <- c("fastLink", "matchesLink")
     
-    stopCluster(cl)
     return(temp)
 }
 

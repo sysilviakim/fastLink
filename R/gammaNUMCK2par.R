@@ -145,7 +145,7 @@ gammaNUMCK2par <- function(matAp, matBp, n.cores = NULL, cut.a = 1) {
         no_cores <- n.cores
         final.list2 <- mclapply(matches.2, function(s){
             ht1 <- which(matrix.1 == s[1]); ht2 <- which(matrix.2 == s[2]);
-            list(ht1, ht2) }, mc.cores = getOption("mc.cores", no_cores))
+            list(ht1, ht2); gc(reset = TRUE)}, mc.cores = getOption("mc.cores", no_cores))
     }
     
     na.list <- list()
@@ -157,7 +157,7 @@ gammaNUMCK2par <- function(matAp, matBp, n.cores = NULL, cut.a = 1) {
     out[["nas"]] <- na.list
     class(out) <- c("fastLink", "gammaNUMCK2par")
     
-    stopCluster(cl)
+    gc(reset = TRUE, verbose = TRUE)
     return(out)
 }
 
