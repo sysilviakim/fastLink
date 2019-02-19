@@ -189,6 +189,7 @@ gammaCK2par <- function(matAp, matBp, n.cores = NULL, cut.a = 0.92, method = "jw
     out[["nas"]] <- na.list
     class(out) <- c("fastLink", "gammaCK2par")
     
+    stopCluster(cl)
     return(out)
 }
 

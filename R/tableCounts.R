@@ -163,6 +163,8 @@ tableCounts <- function(gammalist, nobs.a, nobs.b, n.cores = NULL) {
     colnames(data.new)[nc] <- "counts"
     data.new <- data.new[data.new[, nc] > 0, ]
     class(data.new) <- c("fastLink", "tableCounts")
+    
+    stopCluster(cl)
     return(data.new)
     
 }

@@ -106,6 +106,7 @@ gammaKpar <- function(matAp, matBp, gender = FALSE, n.cores = NULL) {
     out[["nas"]] <- na.list
     class(out) <- c("fastLink", "gammaKpar")
 
+    stopCluster(cl)
     return(out)
 }
 

@@ -219,6 +219,7 @@ gammaCKpar <- function(matAp, matBp, n.cores = NULL, cut.a = 0.92, cut.p = 0.88,
     out[["nas"]] <- na.list
     class(out) <- c("fastLink", "gammaCKpar")
 
+    stopCluster(cl)
     return(out)
 }
 
